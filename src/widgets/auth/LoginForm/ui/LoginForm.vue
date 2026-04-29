@@ -25,6 +25,7 @@ import { GoogleLoginBtn } from "@/features/auth/login"
 </script>
 <style scoped lang="scss">
     .auth{
+        height: 100%;
         @include center;
     }
 

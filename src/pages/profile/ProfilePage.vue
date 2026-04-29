@@ -1,7 +1,8 @@
 <template>
   <div class="profile-page">
-    <OnboardingForm v-if="!userStore.hasOnboarded"/>
-    <EditProfileForm v-else/>
+    <OnboardingForm />
+    <!-- <OnboardingForm v-if="!userStore.hasOnboarded"/>
+    <EditProfileForm v-else/> -->
   </div>
 </template>
 
@@ -17,6 +18,9 @@ const userStore = useUserStore()
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: calc(100dvh - 80px);
+
+  @include lg{
+    padding: 20px;
+  }
 }
 </style>

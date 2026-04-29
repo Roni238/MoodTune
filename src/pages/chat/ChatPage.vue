@@ -16,10 +16,11 @@ import { ChatFooter } from '@/widgets/chat/chat-footer'
 
 <style lang="scss" scoped>
 .chat-page {
-  height: calc(100dvh - 72px); 
-  box-sizing: border-box; 
-  padding: 20px;
+  max-height: calc(100dvh - 72px);
   @include center;
+  @include lg {
+    padding: 20px;
+  }
 
   &__container {
     display: flex;
@@ -29,9 +30,13 @@ import { ChatFooter } from '@/widgets/chat/chat-footer'
     max-width: 600px;
     height: 100%; 
     background: var(--color-surface);
-    border-radius: var(--radius-lg);
+    
     box-shadow: var(--shadow-soft);
     overflow: hidden;
+
+    @include lg {
+      border-radius: var(--radius-lg);
+    }
   }
 }
 </style>

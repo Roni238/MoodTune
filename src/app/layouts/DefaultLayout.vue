@@ -2,7 +2,7 @@
   <div class="layout-default">
     <AppHeader />
     
-    <main class="layout-main-content">
+    <main class="layout-default__content">
       <slot />
     </main>
   </div>
@@ -14,14 +14,11 @@ import { AppHeader } from '@/widgets/header'
 
 <style lang="scss" scoped>
 .layout-default {
-  min-height: 100vh;
-  background-color: var(--color-bg); // Твой мягкий шалфейный фон
-  display: flex;
-  flex-direction: column;
-}
+  background-color: var(--color-bg);
 
-.layout-main-content {
-  flex: 1;
-  width: 100%;
+  &__content {
+    min-height: calc(100dvh - 72px);
+    display: grid;
+  }
 }
 </style>

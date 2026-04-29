@@ -48,9 +48,15 @@ const { profile, isFormValid, submitOnboarding, isLoading } = useOnboarding()
   width: 100%;
   max-width: 600px;
   background: var(--color-surface);
-  padding: 40px;
-  border-radius: var(--radius-lg);
+  padding: 20px;
   box-shadow: var(--shadow-soft);
+  height: 100%;
+
+  @include lg{
+    height: auto;
+    padding: 40px;
+    border-radius: var(--radius-lg);
+  }
 
   &__header {
     margin-bottom: 32px;

@@ -43,12 +43,18 @@ const { profile, isLoading, isFormValid, updateProfile } = useEditProfile()
 
 <style lang="scss" scoped>
 .edit-profile {
+  padding: 20px;
   width: 100%;
   max-width: 600px;
+  height: 100%;
   background: var(--color-surface);
-  padding: 40px;
-  border-radius: var(--radius-lg);
   box-shadow: var(--shadow-soft);
+
+  @include lg{
+    height: auto;
+    padding: 40px;
+    border-radius: var(--radius-lg);
+  }
 
   &__header {
     margin-bottom: 32px;

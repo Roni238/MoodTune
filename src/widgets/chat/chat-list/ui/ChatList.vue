@@ -1,7 +1,8 @@
 <template>   
   <div class="chat-messages" ref="messagesRef">
     <TransitionGroup name="message-list">
-      <AppLoader v-if="chatStore.isLoading"/>
+
+      <AppLoader v-if="chatStore.isLoading" class="chat-messages__loader"/>
 
       <ChatMessage v-else
         v-for="(msg, idx) in chatStore.messages" 
@@ -9,13 +10,12 @@
         :content="msg.content"
         :role="msg.role"
       />
-    </TransitionGroup>
+    </TransitionGroup> 
 
     <div v-if="chatStore.messages.length === 0 && !chatStore.isLoading" class="chat-messages__empty">
       <p>вдох, выдох</p>
       <p>я здесь, чтобы выслушать тебя.</p>
     </div>
-
   </div>
 </template>
 
@@ -46,18 +46,20 @@ const scrollToBottom = async () => {
   display: flex;
   flex-direction: column;
   flex: 1;
-  justify-content: center;
   overflow-y: auto;
   padding: 24px;
   gap: 16px;
   
   &__empty { 
-    height: 100%;
     color: var(--color-text-muted);
     text-align: center;
     font-size: 0.9rem;
     gap: 8px;
-    @include center;
+    margin: auto;
+   }
+
+   &__loader{
+    margin: auto;
    }
 }
 </style>

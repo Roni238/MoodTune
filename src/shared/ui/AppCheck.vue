@@ -29,13 +29,13 @@ defineOptions({
   user-select: none;
   position: relative;
   height: 20px;
-  width: 20px;
 
   &__input {
     position: absolute;
     opacity: 0;
     cursor: pointer;
-    inset: 0;
+    width: 20px;
+    height: 20px;
     z-index: 1;
   }
 

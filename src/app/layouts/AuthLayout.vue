@@ -8,8 +8,12 @@
 
 <style lang="scss" scoped>
 .layout-auth {
-  min-height: 100vh;
   width: 100%;
   background-color: var(--color-surface);
+
+  &__content{
+    min-height: 100dvh;
+    display: grid;
+  }
 }
 </style>

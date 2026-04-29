@@ -14,7 +14,6 @@ import { LoginForm } from "@/widgets/auth/LoginForm"
 .auth-page {
   display: grid;
   grid-template-columns: 1fr;
-  min-height: 100dvh;
   width: 100%;
   background-color: var(--color-bg);
 

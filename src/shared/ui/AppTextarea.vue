@@ -54,7 +54,7 @@ const handleInput = () => resize();
 
 watch(modelValue, () => {
   if (modelValue.value === '') {
-    resize();
+    setTimeout(resize, 0)
   }
 });
 
