@@ -3,6 +3,9 @@ import { ref } from 'vue'
 import { supabase } from '@/shared/api/supabase'
 import { api } from '@/shared/api/api-client'
 
+import { useUserStore } from '@/entities/user/user'
+const userStore = useUserStore()
+
 export const useChatStore = defineStore('chat', () => {
   const messages = ref<{ role: 'user' | 'model'; content: string }[]>([])
   const isTyping = ref(false)
@@ -11,14 +14,15 @@ export const useChatStore = defineStore('chat', () => {
   
   async function fetchMessages() {
     if (isLoading.value || isMessagesLoaded.value) return
-    
     isLoading.value = true
     
     try {
       const { data, error } = await supabase
         .from('chat_messages')
         .select('role, content')
-        .order('created_at', { ascending: true })
+        .eq('user_id', userStore.profile.id)
+        .order('created_at', { ascending: false })
+        .limit(20)
       
       if (error) {
         console.error('Ошибка загрузки сообщений:', error)
@@ -26,7 +30,7 @@ export const useChatStore = defineStore('chat', () => {
       }
 
       if (data) {
-        messages.value = data.map(m => ({
+        messages.value = data.reverse().map(m => ({
           role: m.role as 'user' | 'model',
           content: m.content
         }))
@@ -42,10 +46,14 @@ export const useChatStore = defineStore('chat', () => {
     
     messages.value.push({ role: 'user', content: text })
     isTyping.value = true
+
     try {
+
+      console.log('сообщение')
       const data = await api.post('chat-process', { message: text })
       await addBotResponse(data.text)
-    } catch (e) {
+    }  
+    catch (e) {
       messages.value.push({ role: 'model', content: 'извини, я немного отвлекся; попробуй еще раз;' })
     } finally {
       isTyping.value = false
@@ -59,13 +67,6 @@ export const useChatStore = defineStore('chat', () => {
       messages.value.push({ role: 'model', content: segment.trim() + ';' })
     }
   }
-  
-  function clearChat() {
-    messages.value = []
-    isMessagesLoaded.value = false
-    isLoading.value = false
-    isTyping.value = false
-  }
 
   return { 
     messages, 
@@ -73,7 +74,6 @@ export const useChatStore = defineStore('chat', () => {
     isLoading,
     isMessagesLoaded,
     sendMessage, 
-    fetchMessages,
-    clearChat
+    fetchMessages
   }
 })

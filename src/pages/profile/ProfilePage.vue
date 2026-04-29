@@ -1,8 +1,7 @@
 <template>
   <div class="profile-page">
-    <OnboardingForm />
-    <!-- <OnboardingForm v-if="!userStore.hasOnboarded"/>
-    <EditProfileForm v-else/> -->
+    <OnboardingForm v-if="!userStore.hasOnboarded"/>
+    <EditProfileForm v-else/>
   </div>
 </template>
 
