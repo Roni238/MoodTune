@@ -1,0 +1,11 @@
+@mixin center{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@mixin lg($breakpoint: 1024px) {
+  @media (min-width: $breakpoint) {
+    @content;
+  }
+}

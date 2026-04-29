@@ -1,0 +1,1 @@
+export { default as GoogleLoginBtn } from './ui/GoogleLoginBtn.vue'
