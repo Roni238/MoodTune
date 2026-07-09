@@ -2,7 +2,7 @@
 MoodTune — это веб-приложение, использующее возможности ИИ психологом. Бот не дает бездумных советов, а слушает, анализирует ваше состояние, выслушивает и помогает структурировать мысли, предлагая техники релаксации и поддержку.
 
 ## Предпросмотр https://mood-tune-three.vercel.app/
-<video src="https://github.com/Roni238/MoodTune/blob/main/prev.mp4" width="100%" controls autoplay loop muted></video>
+<video src="https://raw.githubusercontent.com/Roni238/MoodTune/main/prev.mp4" width="100%" controls autoplay loop muted></video>
 
 ## Основные возможности
 Контекстный чат с ИИ: Бот помнит историю диалога (в рамках сессии) и отвечает с учетом предыдущих сообщений.
